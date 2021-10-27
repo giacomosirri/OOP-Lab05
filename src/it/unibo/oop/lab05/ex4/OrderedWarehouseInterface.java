@@ -8,7 +8,7 @@ import it.unibo.oop.lab05.ex3.Warehouse;
  * This interface models a warehouse in which the products are lexicographically ordered.
  * 
  */
-public interface OrderedWarehouseInterface extends Warehouse {
+public interface OrderedWarehouseInterface {
     /**
      * @return p
      *            the products lexicographically ordered

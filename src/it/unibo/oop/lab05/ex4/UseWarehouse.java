@@ -32,11 +32,13 @@ public final class UseWarehouse {
         final Product p1 = new ComparableProduct("carne", 10.5);
         final Product p2 = new ComparableProduct("verdura", 0.7);
         final Product p3 = new ComparableProduct("sabbia");
+        final Product p4 = new ComparableProduct("sabbia", 0.9);
 
-        final Warehouse w = new OrderedWarehouse();
-        w.addProduct(p3);
-        w.addProduct(p1);
+        final OrderedWarehouse w = new OrderedWarehouse();
         w.addProduct(p2);
+        w.addProduct(p1);
+        w.addProduct(p4);
+        w.addProduct(p3);
 
         System.out.println(w.allNames());
         System.out.println(w.allProducts());

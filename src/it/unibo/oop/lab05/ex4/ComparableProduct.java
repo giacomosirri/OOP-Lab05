@@ -16,5 +16,4 @@ public class ComparableProduct extends ProductImpl implements Comparable<Product
 	public int compareTo(Product o) {
 		return this.getName().compareTo(o.getName());
 	}
-	
 }
