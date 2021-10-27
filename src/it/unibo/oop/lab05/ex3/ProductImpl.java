@@ -21,11 +21,7 @@ public class ProductImpl implements Product {
 	public double getQuantity() {
 		return this.quantity;
 	}
-	
-	private boolean equals(Product p) {
-		return this.getName() == p.getName();
-	}
-	
+
 	public String toString() {
 		return this.name + ": " + this.quantity;
 	}
