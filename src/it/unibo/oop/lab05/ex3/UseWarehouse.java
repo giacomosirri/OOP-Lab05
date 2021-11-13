@@ -15,8 +15,8 @@ public final class UseWarehouse {
 	 */
 	public static void main(final String[] args) {
 
-		final Product p1 = new ProductImpl("carne");
-		final Product p2 = new ProductImpl("verdura", 5);
+		final Product p1 = new ProductImpl("meat");
+		final Product p2 = new ProductImpl("vegetables", 5);
 		final Product p3 = new ProductImpl("pasta", 15.2);
 
 		final Warehouse w = new WarehouseImpl();
