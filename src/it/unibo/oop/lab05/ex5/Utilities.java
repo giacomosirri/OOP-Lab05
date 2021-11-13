@@ -21,9 +21,7 @@ public final class Utilities {
     public static <X> Set<X> setUnion(final Set<? extends X> setA, final Set<? extends X> setB) {
 		Set<X> union = new HashSet<>();
 		union.addAll(setA);
-		for (final X thisElement : setB) {
-			union.add(thisElement);
-		}
+		union.addAll(setB);   // adds only the elements not previously added (so the ones which are not in setA)
 		return union;
     }
 
@@ -57,10 +55,7 @@ public final class Utilities {
      */
     public static <X> Set<X> setSymmetricDifference(final Set<? extends X> setA, final Set<? extends X> setB) {
 		Set<X> union = setUnion(setA, setB);
-		Set<X> intersection = setIntersection(setA, setB);
-		for (final X thisElement : intersection) {
-			union.remove(thisElement);
-		}
+		union.removeAll(setIntersection(setA, setB));
 		return union;
     }
 
@@ -73,9 +68,8 @@ public final class Utilities {
      *
      */
     public static <X> X getRandomElement(final Collection<X> coll) {
-		Random rand = new Random();
 		// randomly generates a position in the collection
-		int randValue = rand.nextInt() % coll.size();
+		int randValue = new Random().nextInt() % coll.size();
 		Iterator<X> iterator = coll.iterator();
 		// iterates through the collection until the randValue position is reached
 		for (int i = 0; i < randValue; i++) {
