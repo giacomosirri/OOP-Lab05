@@ -2,7 +2,6 @@ package it.unibo.oop.lab05.ex4;
 
 import java.util.Set;
 import it.unibo.oop.lab05.ex3.Product;
-import it.unibo.oop.lab05.ex3.Warehouse;
 
 /**
  * This interface models a warehouse in which the products are lexicographically ordered.
@@ -10,6 +9,8 @@ import it.unibo.oop.lab05.ex3.Warehouse;
  */
 public interface OrderedWarehouseInterface {
     /**
+     * returns the products in lexicographical order
+     * 
      * @return p
      *            the products lexicographically ordered
      */

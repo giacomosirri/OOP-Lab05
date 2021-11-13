@@ -83,7 +83,16 @@ public final class Utilities {
      *
      */
     public static <X> X getRandomElement(final Collection<X> coll) {
-    	return null;
+    	Random rand = new Random();
+    	int randValue = Math.abs(rand.nextInt() % coll.size());
+    	Iterator<X> iterator = coll.iterator();
+    	for (int i = 0; i < coll.size(); i++) {
+    		X current = iterator.next();
+    		if (i == randValue) {
+    			return current;
+    		}
+    	}
+		return null;
     }
 
     /**
@@ -98,6 +107,6 @@ public final class Utilities {
      * @return a pair with two random elements
      */
     public static <X, Y> Pair<X, Y> getRandomPair(final Collection<X> first, final Collection<Y> second) {
-        return null;
+        return new Pair<X, Y>(getRandomElement(first), getRandomElement(second));
     }
 }

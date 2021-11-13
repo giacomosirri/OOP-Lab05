@@ -16,4 +16,5 @@ public interface Product {
      */
     double getQuantity();
 
+    boolean equals(Product p);
 }
