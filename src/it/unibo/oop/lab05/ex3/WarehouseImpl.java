@@ -5,53 +5,53 @@ import java.util.*;
 public class WarehouseImpl implements Warehouse {
 
 	private final Set<Product> products;
-	
+
+	/**
+	 * 
+	 * @param products
+	 * 				the set of products that are in the warehouse initially.
+	 */
 	public WarehouseImpl(final Set<Product> products) {
 		this.products = new LinkedHashSet<>(products);
 	}
-	
+
+	/**
+	 * Initializes an empty warehouse.
+	 */
 	public WarehouseImpl() {
 		this.products = new LinkedHashSet<>();
 	}
-	
+
 	public void addProduct(Product p) {
 		this.products.add(p);
 	}
-	
+
 	public Set<String> allNames() {
-		final var copyProducts = new LinkedHashSet<>(this.products);
 		final var names = new HashSet<String>();
-		for (Product p : copyProducts) {
+		for (Product p : this.allProducts()) {
 			names.add(p.getName());
 		}
 		return names;
 	}
 
 	public Set<Product> allProducts() {
-		final var copyProducts = new LinkedHashSet<>(this.products);
-		return copyProducts;
+		return new LinkedHashSet<>(this.products);
 	}
 
 	public boolean containsProduct(Product p) {
-		for (Product prod : this.products) {
-			if (prod.equals(p)) {
-				return true;
-			} 	
-		}
-		return false;
+		return this.allProducts().contains(p);
 	}
 
 	public double getQuantity(String name) {
-		for (Product prod : this.products) {
-			if (prod.getName() == name) {
+		for (Product prod : this.allProducts()) {
+			if (prod.getName().equals(name)) {
 				return prod.getQuantity();
 			} 	
 		}
 		return -1;
 	}
-	
+
 	public String toString() {
 		return this.products.toString();
 	}
-
 }

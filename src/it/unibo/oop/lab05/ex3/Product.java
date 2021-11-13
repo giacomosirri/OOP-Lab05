@@ -1,8 +1,8 @@
 package it.unibo.oop.lab05.ex3;
 
 /**
- * This interface represents a product.
  * 
+ * This interface represents a product.
  */
 public interface Product {
 
@@ -16,5 +16,11 @@ public interface Product {
      */
     double getQuantity();
 
+    /**
+     * Two products are equals if they are the same or if they have the same name.
+     * 
+     * @param p
+     * @return true if the products are equals.
+     */
     boolean equals(Product p);
 }
