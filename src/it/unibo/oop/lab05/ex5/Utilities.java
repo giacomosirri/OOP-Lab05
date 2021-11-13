@@ -19,16 +19,12 @@ public final class Utilities {
      * @return a new set that is the union of the input sets.
      */
     public static <X> Set<X> setUnion(final Set<? extends X> setA, final Set<? extends X> setB) {
-        Set<X> union = new HashSet<>();
-        Iterator<? extends X> iteratorOnFirstSet = setA.iterator();
-        while (iteratorOnFirstSet.hasNext()) {
-        	union.add(iteratorOnFirstSet.next());
-        }
-        Iterator<? extends X> iteratorOnSecondSet = setB.iterator();
-        while (iteratorOnSecondSet.hasNext()) {
-        	union.add(iteratorOnSecondSet.next());
-        }
-        return union;
+		Set<X> union = new HashSet<>();
+		union.addAll(setA);
+		for (final X thisElement : setB) {
+			union.add(thisElement);
+		}
+		return union;
     }
 
     /**
@@ -41,15 +37,13 @@ public final class Utilities {
      * @return a new set that is the intersection of the input sets.
      */
     public static <X> Set<X> setIntersection(final Set<? extends X> setA, final Set<? extends X> setB) {
-        Set<X> union = new HashSet<>();
-        Iterator<? extends X> iterator = setA.iterator();
-        while (iterator.hasNext()) {
-        	X nextElem = iterator.next();
-        	if (setB.contains(nextElem)) {
-        		union.add(nextElem);
-        	}
-        }
-        return union;
+		Set<X> intersection = new HashSet<>();
+		for (final X thisElement : setA) {
+			if (setB.contains(thisElement)) {
+				intersection.add(thisElement);
+			}
+		}
+		return intersection;
     }
 
     /**
@@ -62,16 +56,12 @@ public final class Utilities {
      * @return a new set that is the symmetric difference of the input sets.
      */
     public static <X> Set<X> setSymmetricDifference(final Set<? extends X> setA, final Set<? extends X> setB) {
-        Set<X> union = setUnion(setA, setB);
-        Set<X> intersection = setIntersection(setA, setB);
-        Iterator<X> iterator = union.iterator();
-        while (iterator.hasNext()) {
-        	X nextElem = iterator.next();
-        	if (intersection.contains(nextElem)) {
-        		iterator.remove();
-        	}
-        }
-        return union;
+		Set<X> union = setUnion(setA, setB);
+		Set<X> intersection = setIntersection(setA, setB);
+		for (final X thisElement : intersection) {
+			union.remove(thisElement);
+		}
+		return union;
     }
 
     /**
@@ -83,16 +73,15 @@ public final class Utilities {
      *
      */
     public static <X> X getRandomElement(final Collection<X> coll) {
-    	Random rand = new Random();
-    	int randValue = Math.abs(rand.nextInt() % coll.size());
-    	Iterator<X> iterator = coll.iterator();
-    	for (int i = 0; i < coll.size(); i++) {
-    		X current = iterator.next();
-    		if (i == randValue) {
-    			return current;
-    		}
-    	}
-		return null;
+		Random rand = new Random();
+		// randomly generates a position in the collection
+		int randValue = rand.nextInt() % coll.size();
+		Iterator<X> iterator = coll.iterator();
+		// iterates through the collection until the randValue position is reached
+		for (int i = 0; i < randValue; i++) {
+			iterator.next();
+		}
+		return iterator.next();
     }
 
     /**
